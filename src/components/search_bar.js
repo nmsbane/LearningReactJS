@@ -22,8 +22,37 @@ class SearchBar extends Component /*React.Component*/ {
 	// ES6 syntax for creating a method inside a class
 	// alternate to render: function() {}
 	render() {
-		return <input />; // every render() function should return the JSX
+		//return <input />; // every render() function should return the JSX
+		/* 
+			Add the listener function to the element
+			Whenever writing JSX, if we use JS variables then we will
+			wrap it up in {curly braces} 
+		*/
+		//return <input onChange={this.onInputChange} />
+
+		/*
+			Using ES6 fatter function for the above statemen
+			return <input onChange={
+					(event) => console.log(event.target.value)
+			}
+		*/
+		return <input onChange={(event) => console.log(event.target.value)}/>
 	}
+
+	/*
+		Some information about handling events;
+		Event handling is a 2 step process: 
+			We should create a listener function
+			Add that listener function to the intrested element
+		
+		All listener functions will get an event object
+		when called
+	*/
+
+	// create a listener function
+	// onInputChange(event) {
+	// 	console.log(event.target.value);
+	// }
 }
 
 // class based component vs function based component
