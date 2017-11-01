@@ -18,6 +18,24 @@ import React, { Component } from 'react';
 // ES6 syntax to create a class based component. It should inherit from React.Component
 class SearchBar extends Component /*React.Component*/ {
 
+	/*
+		State: it is just a plain JS object which records and reacts to user events.( created when the component is initialized)
+
+		IMPORTANT: Only class based components have state but not function based components
+
+		When ever the state changes, render() function is rerun and all the child components will
+		rerun their render() functions.
+
+		We construct state object inside the constructor.
+
+		For example in the following code, this.state variable holds the state of the component
+	*/
+	constructor(props){
+		super(props);
+
+		this.state = { term: '' };
+	}
+
 	// every class should have render() method
 	// ES6 syntax for creating a method inside a class
 	// alternate to render: function() {}
@@ -36,7 +54,24 @@ class SearchBar extends Component /*React.Component*/ {
 					(event) => console.log(event.target.value)
 			}
 		*/
-		return <input onChange={(event) => console.log(event.target.value)}/>
+		/*
+			We change the state of component using this.setState method, by passing the object
+			Whenever the state is updated, the component will be re rendered with the updated state
+		*/
+		//return <input onChange={(event) => console.log(event.target.value)}/>
+
+		/*
+			Controlled Components:
+				It means that state changes drives the component.
+				If state of the component is changed then only component is rendered.
+		*/
+		return (
+			/*whenever referencing JS variable inside JSX wrap it up in braces like {this.state.term}*/
+			// Value of input is {this.state.term} 
+			<div>
+				<input onChange={(event) => this.setState({term:event.target.value})} />
+			</div>
+		);
 	}
 
 	/*
